@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Média dos Estudantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 50%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #0ba732;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #04eb3e;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Média dos Estudantes</h1>
+        <label for="nome">Insira o nome do aluno:</label>
+        <input type="text" id="nome">
+
+        <label for="num1">Digite a primeira nota:</label>
+        <input type="text" id="num1">
+        
+        <label for="num2">Digite a segunda nota:</label>
+        <input type="text" id="num2">
+
+        <label for="num3">Digite a terceira nota:</label>
+        <input type="text" id="num3">
+
+        <button onclick="media()">Calcular</button>
+
+        <p id="result"></p>
+    </div>
+    <script>
+        function media() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var num3 = parseFloat(document.getElementById("num3").value);
+            var nome = document.getElementById("nome").value;
+            
+            if (!isNaN(num1) && !isNaN(num2) && !isNaN(num3)) {
+                var result = (num1 + num2 + num3) / 3;
+                result = result.toFixed(2)
+
+                document.getElementById("result").innerHTML = "A média de " + nome + " é de: " + result;
+
+                if (result < 7) {
+                    document.getElementById("result").innerHTML += "<br>Estude mais! Sua média está abaixo de 7.";
+                } else {
+                    document.getElementById("result").innerHTML += "<br>Parabéns! Sua média é igual ou maior que 7.";
+                }
+            
+            } else {
+                alert("Digite valores válidos!");
+            }
+        }
+    </script>
+    
+</body>
+</html>
